@@ -45,6 +45,21 @@ public class tower : MonoBehaviour
     {
         if (enemies[index] == null)
         {
+            
+            int p = 0;
+            foreach (GameObject i in enemies)
+            {
+
+                if (p != null)
+                {
+                    index = p;
+                    return;
+                }
+                p++;
+            }
+            enemies.Clear();
+            index = 0;
+            enemies.Capacity = 0;
 
         }
     }

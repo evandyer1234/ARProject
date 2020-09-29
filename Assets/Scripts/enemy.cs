@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float health = 10f;
+    public float speed = 10f;
+    public gameObject Base;
+
+   
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
