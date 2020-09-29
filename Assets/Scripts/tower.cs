@@ -11,17 +11,9 @@ public class tower : MonoBehaviour
     public Collider area;
     public List<GameObject> enemies = new List<GameObject>();
     public int index = 0;
+    public GameObject parent;
     
-    void Start()
-    {
-        
-    }
-
     
-    void Update()
-    {
-        
-    }
     void FixedUpdate()
     {
         if (enemies[index] != null)
@@ -32,6 +24,7 @@ public class tower : MonoBehaviour
                 blast clone;
                 clone = Instantiate(projectile, SpawnPoint.transform.position, transform.rotation);
                 clone.Target = enemies[index].gameObject;
+                clone.gameObject.transform.SetParent(parent.transform, true);
             }
         }
         
@@ -50,7 +43,7 @@ public class tower : MonoBehaviour
             foreach (GameObject i in enemies)
             {
 
-                if (p != null)
+                if (i != null)
                 {
                     index = p;
                     return;
