@@ -10,6 +10,8 @@ public class Base : MonoBehaviour
     public Slider bar;
     public float credits = 100;
     public TextMeshProUGUI amount;
+    public Manager manager;
+    public enemy enemyprefab;
 
     void Start()
     {
@@ -26,6 +28,10 @@ public class Base : MonoBehaviour
        
     }
     public void Die()
+    {
+        manager.Lose();
+    }
+    public void Round(int num)
     {
 
     }

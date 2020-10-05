@@ -26,6 +26,10 @@ public class Manager : MonoBehaviour
     {
 
     }
+    public void Lose()
+    {
+
+    }
     public void Pause()
     {
 
