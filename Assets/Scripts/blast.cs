@@ -4,16 +4,53 @@ using UnityEngine;
 
 public class blast : MonoBehaviour
 {
+    public float damage = 1f;
+    public float speed = 10f;
     public GameObject Target;
-    public float speed;
+    Vector3 MoveDirection;
+    public float WithinRange = 2f;
 
-    
-    void fixedUpdate()
+
+    void FixedUpdate()
     {
-        
+        if (!IsCloseToTarget())
+        {
+            MoveDirection = (Target.transform.position - transform.position).normalized;
+            transform.position += (Time.fixedDeltaTime * MoveDirection * speed);
+            gameObject.transform.eulerAngles = MoveDirection;
+        }
+        else
+        {
+            enemy e = Target.GetComponent<enemy>();
+            if (e != null)
+            {
+                e.TakeDamage(damage);
+                Destroy(this.gameObject);
+            }
+        }
+        if (Target == null)
+        {
+            Destroy(this.gameObject);
+        }
     }
-    void OnTriggerEnter(Collider collision)
+
+    public bool IsCloseToTarget()
     {
 
+        if (GetDistanceTo(Target) < WithinRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    public float GetDistanceTo(GameObject Other)
+    {
+        float distanceTo = (Other.transform.position - transform.position).magnitude;
+
+        return distanceTo;
     }
 }

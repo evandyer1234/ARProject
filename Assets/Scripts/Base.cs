@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Base : MonoBehaviour
 {
     public float health;
     public Slider bar;
+    public float credits = 100;
+    public TextMeshProUGUI amount;
 
     void Start()
     {
