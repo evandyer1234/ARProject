@@ -18,6 +18,7 @@ public class MakeAppearOnPlane : MonoBehaviour
     [Tooltip("A transform which should be made to appear to be at the touch point.")]
     Transform m_Content;
     public EventSystem ES;
+    public bool place = false;
 
     /// <summary>
     /// A transform which should be made to appear to be at the touch point.
@@ -65,13 +66,16 @@ public class MakeAppearOnPlane : MonoBehaviour
             { }
             else
             {
-                // Raycast hits are sorted by distance, so the first one
-                // will be the closest hit.
-                var hitPose = s_Hits[0].pose;
+                if (place)
+                {
+                    // Raycast hits are sorted by distance, so the first one
+                    // will be the closest hit.
+                    var hitPose = s_Hits[0].pose;
 
-                // This does not move the content; instead, it moves and orients the ARSessionOrigin
-                // such that the content appears to be at the raycast hit position.
-                m_SessionOrigin.MakeContentAppearAt(content, hitPose.position, m_Rotation);
+                    // This does not move the content; instead, it moves and orients the ARSessionOrigin
+                    // such that the content appears to be at the raycast hit position.
+                    m_SessionOrigin.MakeContentAppearAt(content, hitPose.position, m_Rotation);
+                }
             }
         }
     }

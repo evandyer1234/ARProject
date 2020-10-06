@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blast : MonoBehaviour
+public class blast : Parent
 {
     public float damage = 1f;
     public float speed = 10f;

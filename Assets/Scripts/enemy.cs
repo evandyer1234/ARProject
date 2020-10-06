@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class enemy : Parent
 {
     public float health = 10f;
     public float speed = 10f;
