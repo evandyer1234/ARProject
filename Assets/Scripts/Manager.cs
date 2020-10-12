@@ -12,8 +12,11 @@ public class Manager : MonoBehaviour
     float lt;
     bool lost = false;
     public MakeAppearOnPlane m;
+    
     public GameObject content;
     public bool roundend = true;
+    public bool baseplaced = false;
+    public tower t;
 
     void Start()
     {
@@ -32,6 +35,7 @@ public class Manager : MonoBehaviour
                 Restart();
             }
         }
+        
     }
     public void Restart()
     {
@@ -41,6 +45,8 @@ public class Manager : MonoBehaviour
         {
             Destroy(p.gameObject);
         }
+        m.place = false;
+        Losetext.SetActive(false);
     }
     public void Startgame()
     {
@@ -58,7 +64,12 @@ public class Manager : MonoBehaviour
     }
     public void PlaceScene()
     {
-        m.place = !m.place;
+       
+        tower clone;
+        clone = Instantiate(t, new Vector3(0, 0, 0), Quaternion.identity);
+        current.gameObject.transform.SetParent(null);
+        clone.gameObject.transform.SetParent(content.transform);
+        
     }
     public void Lose()
     {

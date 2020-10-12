@@ -21,6 +21,7 @@ public class Base : Parent
 
     void Awake()
     {
+        manager.PlaceScene();
         bar.maxValue = health;
         r = rate;
     }
