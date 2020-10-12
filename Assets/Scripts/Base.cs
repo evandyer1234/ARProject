@@ -36,6 +36,7 @@ public class Base : Parent
                 clone = Instantiate(enemyprefab, sp.transform.position, Quaternion.identity);
                 clone.goal = this;
                 clone.gameObject.transform.SetParent(manager.content.transform);
+                //clone.gameObject.transform.SetParent(gameObject.transform);
                 total--;
                 if (total <= 0)
                 {

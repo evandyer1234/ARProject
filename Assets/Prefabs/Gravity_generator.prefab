@@ -815,9 +815,10 @@ MonoBehaviour:
   credits: 100
   amount: {fileID: 0}
   manager: {fileID: 0}
-  enemyprefab: {fileID: 0}
-  Spawns: {fileID: 0}
-  sp: {fileID: 0}
+  enemyprefab: {fileID: 6870357661973355467, guid: 9412a045b733000458f3a0d2e0a1ab91,
+    type: 3}
+  Spawns: {fileID: 4630894105989490545}
+  sp: {fileID: 7474162720034987620}
   rate: 2
 --- !u!1 &7123676483534843800
 GameObject:
@@ -977,7 +978,7 @@ GameObject:
   - component: {fileID: 5172761255910525638}
   - component: {fileID: 3357047703479090462}
   m_Layer: 0
-  m_Name: Prism
+  m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1471,7 +1472,7 @@ MeshCollider:
   m_GameObject: {fileID: 8395313626591936499}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
