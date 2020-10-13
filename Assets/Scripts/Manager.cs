@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Manager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class Manager : MonoBehaviour
     public bool roundend = true;
     public bool baseplaced = false;
     public tower t;
+    public TextMeshProUGUI amount;
 
     void Start()
     {
@@ -54,6 +57,7 @@ public class Manager : MonoBehaviour
         clone = Instantiate(baseprefab, new Vector3(0,0,0), Quaternion.identity);
         clone.gameObject.transform.SetParent(content.transform);
         clone.manager = this;
+        clone.amount = amount;
         current = clone;
     }
     public void StartRound()
