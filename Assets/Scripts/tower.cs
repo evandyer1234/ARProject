@@ -14,6 +14,8 @@ public class tower : MonoBehaviour
     public GameObject parent;
     
     
+   
+    
     void FixedUpdate()
     {
         if (enemies[index] != null)
@@ -24,17 +26,24 @@ public class tower : MonoBehaviour
                 blast clone;
                 clone = Instantiate(projectile, SpawnPoint.transform.position, transform.rotation);
                 clone.Target = enemies[index].gameObject;
-                clone.gameObject.transform.SetParent(parent.transform, true);
+                //clone.gameObject.transform.SetParent(parent.transform, true);
+                current = shotspeed;
             }
+        }
+        else
+        {
+            UnTarget();
         }
         
     }
     public void Target (GameObject target)
     {
-        enemies.Capacity++;
         enemies.Add(target);
+        enemies.Capacity++;
+        
     }
-    public void UnTarget(GameObject target)
+    
+    public void UnTarget()
     {
         if (enemies[index] == null)
         {
@@ -55,6 +64,5 @@ public class tower : MonoBehaviour
             enemies.Capacity = 0;
 
         }
-    }
-    
+    }  
 }

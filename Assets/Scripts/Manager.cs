@@ -19,12 +19,15 @@ public class Manager : MonoBehaviour
     public bool roundend = true;
     public bool baseplaced = false;
     public tower t;
-    public TextMeshProUGUI amount;
+    public GameObject point;
+   
+    public GameObject NextButton;
 
     void Start()
     {
         lt = loset;
         m.place = true;
+        NextButton.SetActive(false);
     }
     void FixedUpdate()
     {
@@ -40,6 +43,7 @@ public class Manager : MonoBehaviour
         }
         
     }
+    
     public void Restart()
     {
         roundend = true;
@@ -50,15 +54,18 @@ public class Manager : MonoBehaviour
         }
         m.place = false;
         Losetext.SetActive(false);
+        round = 1;
     }
     public void Startgame()
     {
         Base clone;
-        clone = Instantiate(baseprefab, new Vector3(0,0,0), Quaternion.identity);
+        clone = Instantiate(baseprefab, point.transform.position, Quaternion.identity);
         clone.gameObject.transform.SetParent(content.transform);
+        
         clone.manager = this;
-        clone.amount = amount;
+        
         current = clone;
+        NextButton.SetActive(true);
     }
     public void StartRound()
     {
@@ -71,14 +78,25 @@ public class Manager : MonoBehaviour
        
         tower clone;
         clone = Instantiate(t, new Vector3(0, 0, 0), Quaternion.identity);
-        current.gameObject.transform.SetParent(null);
+        //current.gameObject.transform.SetParent(null);
         clone.gameObject.transform.SetParent(content.transform);
-        
+        //m.content = clone.transform;
+        current.hit(150f);
+        NextButton.SetActive(false);
+    }
+    public void Placetower()
+    {
+        tower clone;
+        clone = Instantiate(t, new Vector3(0, 0, 0), Quaternion.identity);
+        current.gameObject.transform.SetParent(null);
+        m.content = clone.transform;
+        current.hit(150f);
     }
     public void Lose()
     {
         Time.timeScale = 0.2f;
         Losetext.SetActive(true);
+        current.spawn = false;
     }
     public void Pause()
     {

@@ -788,7 +788,7 @@ Transform:
   m_GameObject: {fileID: 7123676483534789450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.101724, y: -3.2569346, z: 4.239146}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 7121269161292063868}
   - {fileID: 7119386082296133892}
@@ -810,15 +810,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21151632b9ffa742a6bfa8f78503141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 400
   bar: {fileID: 1279666644972157155}
-  credits: 100
   amount: {fileID: 0}
   manager: {fileID: 0}
   enemyprefab: {fileID: 6870357661973355467, guid: 9412a045b733000458f3a0d2e0a1ab91,
     type: 3}
   Spawns: {fileID: 4630894105989490545}
-  sp: {fileID: 7474162720034987620}
+  sp:
+  - {fileID: 7474162720034987620}
+  - {fileID: 228985040873327670}
+  - {fileID: 5863572208953707101}
+  - {fileID: 8880448158542153364}
+  - {fileID: 3529290651415191708}
+  spawn: 0
   rate: 2
 --- !u!1 &7123676483534843800
 GameObject:
@@ -1024,7 +1029,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 7c05705a937be654ab470d20609c0afd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

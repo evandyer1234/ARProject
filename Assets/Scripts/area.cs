@@ -7,21 +7,14 @@ public class area : MonoBehaviour
     public tower t;
 
     
-    void Start()
-    {
-        
-    }
-
     
-    void Update()
-    {
-        
-    }
     void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("EnemyEntered");
         enemy e = collision.gameObject.GetComponent<enemy>();
         if (e != null)
         {
+            
             t.Target(collision.gameObject);
         }
     }
@@ -30,7 +23,7 @@ public class area : MonoBehaviour
         enemy e = collision.gameObject.GetComponent<enemy>();
         if (e != null)
         {
-            t.Target(collision.gameObject);
+            t.UnTarget();
         }
     }
 }
