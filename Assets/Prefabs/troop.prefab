@@ -934,11 +934,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  speed: 0.1
+  speed: 0.2
   damage: 1
   attackrate: 0.5
   goal: {fileID: 0}
-  WithinRange: 0.001
+  WithinRange: 0.01
   deadguy: {fileID: 3425311211187756013, guid: 61ac91f5bc11cd046ab0fe46f464e8be, type: 3}
 --- !u!65 &1689371229732761115
 BoxCollider:

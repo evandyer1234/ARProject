@@ -712,14 +712,12 @@ MonoBehaviour:
   m: {fileID: 1758328269}
   content: {fileID: 1788311184}
   roundend: 1
-  baseplaced: 0
   t: {fileID: 475612772152789067, guid: 5f9f7e65abb14c141a9f815be7805123, type: 3}
   point: {fileID: 682354303}
   point2: {fileID: 1098148602}
   cam: {fileID: 1110131214}
   ES: {fileID: 1311752366}
   roundbutton: {fileID: 602969182}
-  NextButton: {fileID: 46707240}
 --- !u!4 &393543470
 Transform:
   m_ObjectHideFlags: 0

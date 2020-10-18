@@ -13,6 +13,10 @@ public class blast : Parent
 
     void FixedUpdate()
     {
+        if (Target == null)
+        {
+            Destroy(this.gameObject);
+        }
         if (!IsCloseToTarget())
         {
             MoveDirection = (Target.transform.position - transform.position).normalized;
@@ -28,15 +32,12 @@ public class blast : Parent
                 Destroy(this.gameObject);
             }
         }
-        if (Target == null)
-        {
-            Destroy(this.gameObject);
-        }
+       
     }
 
     public bool IsCloseToTarget()
     {
-
+        Debug.Log(GetDistanceTo(Target));
         if (GetDistanceTo(Target) < WithinRange)
         {
             return true;
