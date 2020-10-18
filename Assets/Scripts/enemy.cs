@@ -39,9 +39,21 @@ public class enemy : Parent
             ar -= Time.fixedDeltaTime;
             if (ar <= 0)
             {
+                int f = Random.Range(0, 3);
                 goal.hit(damage);
                 ar = attackrate;
-                animator.SetTrigger("Attack");
+                if (f == 0)
+                {
+                    animator.SetTrigger("Attack");
+                }
+                else if (f == 1)
+                {
+                    animator.SetTrigger("Attack2");
+                }
+                else if (f == 2)
+                {
+                    animator.SetTrigger("Attack3");
+                }
             }
         }
         

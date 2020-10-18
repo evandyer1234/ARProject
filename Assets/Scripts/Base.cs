@@ -44,6 +44,7 @@ public class Base : Parent
                 if (total <= 0)
                 {
                     manager.roundend = true;
+                    manager.roundbutton.SetActive(true);
                     spawn = false;
                 }
             }

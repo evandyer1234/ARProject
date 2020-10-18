@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class Manager : MonoBehaviour
 {
@@ -17,17 +18,19 @@ public class Manager : MonoBehaviour
     
     public GameObject content;
     public bool roundend = true;
-    public bool baseplaced = false;
+   
     public tower t;
     public GameObject point;
-   
-    public GameObject NextButton;
+    public GameObject point2;
+    public Camera cam;
+    public EventSystem ES;
+    public GameObject roundbutton;
 
     void Start()
     {
         lt = loset;
         m.place = true;
-        NextButton.SetActive(false);
+       
     }
     void FixedUpdate()
     {
@@ -43,7 +46,32 @@ public class Manager : MonoBehaviour
         }
         
     }
-    
+    void Update()
+    {
+        
+        if (Input.touchCount == 0)
+        {
+            return;
+        }
+
+        var touch = Input.GetTouch(0);
+        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(touch.position);
+
+        if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        {
+            return;
+        }
+        else
+        {
+            if (Physics.Raycast(ray, out hit))
+            {
+                //var hitPose = s_Hits[0].pose;
+                point2.transform.position = hit.point;
+            }
+        }
+        
+    }
     public void Restart()
     {
         roundend = true;
@@ -61,21 +89,24 @@ public class Manager : MonoBehaviour
         Base clone;
         clone = Instantiate(baseprefab, point.transform.position, Quaternion.identity);
         clone.gameObject.transform.SetParent(content.transform);
-        
+        m.place = false;
         clone.manager = this;
         
         current = clone;
-        NextButton.SetActive(true);
+        
+        point.SetActive(false);
+        point2.SetActive(true);
     }
     public void StartRound()
     {
         roundend = false;
         current.Round(round);
         round++;
+        roundbutton.SetActive(false);
     }
     public void PlaceScene()
     {
-       
+        /*
         tower clone;
         clone = Instantiate(t, new Vector3(0, 0, 0), Quaternion.identity);
         //current.gameObject.transform.SetParent(null);
@@ -83,13 +114,16 @@ public class Manager : MonoBehaviour
         //m.content = clone.transform;
         current.hit(150f);
         NextButton.SetActive(false);
+        */
+        GameObject clone;
+        clone = Appear(t.gameObject);
+        current.hit(150f);
+        m.place = false;
     }
     public void Placetower()
     {
-        tower clone;
-        clone = Instantiate(t, new Vector3(0, 0, 0), Quaternion.identity);
-        current.gameObject.transform.SetParent(null);
-        m.content = clone.transform;
+        GameObject clone;
+        clone = Appear(t.gameObject);
         current.hit(150f);
     }
     public void Lose()
@@ -105,5 +139,14 @@ public class Manager : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1f;
+    }
+    public GameObject Appear(GameObject thing)
+    {
+        
+                GameObject clone;
+                clone = Instantiate(thing, point2.transform.position, Quaternion.identity);
+                clone.transform.SetParent(content.transform);
+                return clone;
+            
     }
 }
